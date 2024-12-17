@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('./src/img/minecraft-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 15px;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        nav ul li a:active {
+            background-color: #777;
+        }
+
+        .login {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .login a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        .login-icon {
+            margin-left: 8px;
+        }
+
+        .form-switch {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .form-switch button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .form-switch button.active {
+            background-color: #555;
+        }
+
+        .form-switch button:hover {
+            background-color: #777;
+        }
+
+        main {
+            margin-top: 20px;
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #ccc;
+            transform: perspective(1000px) translateZ(0);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button[type="submit"] {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-footer a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .reset-password-form {
+            display: none;
+            flex-direction: column;
+        }
+
+        .reset-password-form input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="./index.html">Jouer</a></li>
+            <li><a href="./shop.html">Boutique</a></li>
+            <li><a href="./regle.html">Réglement</a></li>
+            <li><a href="./cgv_cgu.html">CGV & CGU</a></li>
+        </ul>
+        <div class="login">
+            <a href="./login.html">Connexion</a>
+            <img src="./src/img/login-icon.png" alt="Connexion" class="login-icon" width="20" height="20">
+        </div>
+    </nav>
+</header>
+
+<div class="form-switch">
+    <button id="loginButton" class="active">Se Connecter</button>
+    <button id="createAccountButton">Créer un Compte</button>
+</div>
+
+<main>
+    <form id="loginForm">
+        <h1>Connexion</h1>
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+
+        <button type="submit">Se connecter</button>
+
+        <div class="form-footer">
+            <a href="#" id="forgotPasswordLink">Mot de passe oublié ?</a>
+        </div>
+    </form>
+
+    <!-- Formulaire pour réinitialisation de mot de passe -->
+    <form id="resetPasswordForm" class="reset-password-form">
+        <h1>Réinitialisation du mot de passe</h1>
+        <label for="resetEmail">Adresse e-mail</label>
+        <input type="email" id="resetEmail" name="resetEmail" placeholder="Entrez votre adresse e-mail" required>
+
+        <button type="submit">Réinitialiser le mot de passe</button>
+
+        <div class="form-footer">
+            <a href="#" id="backToLoginLink">Retour à la connexion</a>
+        </div>
+    </form>
+
+    <form id="createAccountForm" style="display: none;">
+        <h1>Créer un Compte</h1>
+        <label for="newUsername">Nom d'utilisateur</label>
+        <input type="text" id="newUsername" name="newUsername" placeholder="Choisissez un nom d'utilisateur" required>
+
+        <label for="newEmail">Adresse e-mail</label>
+        <input type="email" id="newEmail" name="newEmail" placeholder="Entrez votre adresse e-mail" required>
+
+        <label for="newPassword">Mot de passe</label>
+        <input type="password" id="newPassword" name="newPassword" placeholder="Choisissez un mot de passe" required>
+
+        <button type="submit">Créer un compte</button>
+    </form>
+</main>
+
+<script>
+    const loginButton = document.getElementById('loginButton');
+    const createAccountButton = document.getElementById('createAccountButton');
+    const loginForm = document.getElementById('loginForm');
+    const createAccountForm = document.getElementById('createAccountForm');
+    const resetPasswordForm = document.getElementById('resetPasswordForm');
+    const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+    const backToLoginLink = document.getElementById('backToLoginLink');
+
+    loginButton.addEventListener('click', () => {
+        loginForm.style.display = 'flex';
+        createAccountForm.style.display = 'none';
+        resetPasswordForm.style.display = 'none';
+        loginButton.classList.add('active');
+        createAccountButton.classList.remove('active');
+    });
+
+    createAccountButton.addEventListener('click', () => {
+        loginForm.style.display = 'none';
+        createAccountForm.style.display = 'flex';
+        resetPasswordForm.style.display = 'none';
+        createAccountButton.classList.add('active');
+        loginButton.classList.remove('active');
+    });
+
+    forgotPasswordLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.style.display = 'none';
+        resetPasswordForm.style.display = 'flex';
+    });
+
+    backToLoginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        resetPasswordForm.style.display = 'none';
+        loginForm.style.display = 'flex';
+    });
+
+    // Gestion de la soumission du formulaire de réinitialisation
+    resetPasswordForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('resetEmail').value;
+        alert('Un lien de réinitialisation a été envoyé à ' + email);
+        resetPasswordForm.reset();
+        loginForm.style.display = 'flex';
+        resetPasswordForm.style.display = 'none';
+    });
+</script>
+</body>
+</html>
