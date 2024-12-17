@@ -1,10 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('./images/minecraft-shop-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            height: 100vh;
+        }
+
+        header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 15px;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        nav ul li a:active {
+            background-color: #777;
+        }
+
+        .login {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .login a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        .login-icon {
+            margin-left: 8px;
+        }
+
+        .sidebar {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            width: 250px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar button:hover {
+            background-color: #555;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .shop-container {
+            margin-top: 20px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .shop-item {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .shop-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .shop-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .shop-item h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .shop-item p {
+            margin: 0 0 15px;
+            font-size: 1rem;
+        }
+
+        .shop-item button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .shop-item button:hover {
+            background-color: #555;
+        }
+
+        .checkout {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .checkout button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#home">Jouer</a></li>
+            <li><a href="./shop.html">Boutique</a></li>
+            <li><a href="./regle.html">Réglement</a></li>
+        </ul>
+        <div class="login">
+            <a href="./login.html#se_connecter">Se Connecter</a>
+            <a href="./login.html#create_account">Créer un compte</a>
+            <img src="./icons/login-icon.png" alt="Connexion" class="login-icon" width="20" height="20">
+        </div>
+    </nav>
+</header>
 
+<div class="sidebar">
+    <button>Grades</button>
+    <button>Kits</button>
+    <button>Dons</button>
+    <button>Panier</button>
+    <button>Autres</button>
+</div>
+
+<div class="content">
+    <h1 class="page-title">Boutique</h1>
+
+    <div class="shop-container">
+        <div class="shop-item">
+            <img src="./images/item1.jpg" alt="Item 1">
+            <h3>Épée en diamant</h3>
+            <p>Une épée puissante pour vos aventures.</p>
+            <button>Acheter - 10€</button>
+        </div>
+
+        <div class="shop-item">
+            <img src="./images/item2.jpg" alt="Item 2">
+            <h3>Armure complète</h3>
+            <p>Protection ultime contre les monstres.</p>
+            <button>Acheter - 20€</button>
+        </div>
+
+        <div class="shop-item">
+            <img src="./images/item3.jpg" alt="Item 3">
+            <h3>Kit de survie</h3>
+            <p>Tout ce dont vous avez besoin pour démarrer.</p>
+            <button>Acheter - 15€</button>
+        </div>
+
+        <div class="shop-item">
+            <img src="./images/item4.jpg" alt="Item 4">
+            <h3>Monture rare</h3>
+            <p>Chevauchez avec style dans le monde de Minecraft.</p>
+            <button>Acheter - 25€</button>
+        </div>
+    </div>
+
+    <div class="checkout">
+        <button>Payer maintenant</button>
+    </div>
+</div>
 </body>
 </html>
